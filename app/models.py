@@ -1,13 +1,15 @@
 from datetime import datetime, timezone
 from time import time
 from typing import Optional
+from flask import current_app
 from flask_login import UserMixin
 from hashlib import md5
 from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 import sqlalchemy as sa
 import sqlalchemy.orm as so
-from app import app, db, login
+from app import db, login
+
 
 followers = sa.Table(
     'followers',
@@ -17,6 +19,7 @@ followers = sa.Table(
     sa.Column('followed_id', sa.Integer, sa.ForeignKey('user.id'),
               primary_key=True)
 )
+
 
 class User(UserMixin, db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
@@ -53,12 +56,12 @@ class User(UserMixin, db.Model):
     def get_reset_password_token(self, expires_in=600):
         return jwt.encode(
             {'reset_password': self.id, 'exp': time() + expires_in},
-            app.config['SECRET_KEY'], algorithm='HS256')
+            current_app.config['SECRET_KEY'], algorithm='HS256')
     
     @staticmethod
     def verify_reset_password_token(token):
         try:
-            id = jwt.decode(token, app.config['SECRET_KEY'],
+            id = jwt.decode(token, current_app.config['SECRET_KEY'],
                             algorithms=['HS256'])['reset_password']
         except:
             return
@@ -105,9 +108,11 @@ class User(UserMixin, db.Model):
             .order_by(Post.timestamp.desc())
         )
 
+
 @login.user_loader
 def load_user(id):
     return db.session.get(User, int(id))
+
 
 class Post(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
