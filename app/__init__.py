@@ -45,6 +45,9 @@ def create_app(config_class=Config):
     app.redis = Redis.from_url(app.config['REDIS_URL'])
     app.task_queue = rq.Queue('flask-mega-tasks', connection=app.redis)
 
+    from app.api import bp as api_bp
+    app.register_blueprint(api_bp, url_prefix='/api')
+
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
