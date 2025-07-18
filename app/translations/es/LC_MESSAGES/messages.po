@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-07-17 23:23-0400\n"
+"POT-Creation-Date: 2025-07-18 15:40-0400\n"
 "PO-Revision-Date: 2025-07-16 14:23-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/__init__.py:23
+#: app/__init__.py:25
 msgid "Please log in to access this page."
 msgstr "Por favor ingrese para acceder a esta página."
 
@@ -155,13 +155,21 @@ msgstr "¡No te puedes dejar de seguir a tí mismo!"
 msgid "You are not following %(username)s."
 msgstr "No estás siguiendo a %(username)s."
 
-#: app/main/routes.py:185
+#: app/main/routes.py:187
 #, fuzzy
 msgid "Your message has been sent."
 msgstr "Tu contraseña ha sido cambiada."
 
-#: app/main/routes.py:187
+#: app/main/routes.py:189
 msgid "Send Message"
+msgstr ""
+
+#: app/main/routes.py:229
+msgid "An export task is currently in progress"
+msgstr ""
+
+#: app/main/routes.py:231
+msgid "Exporting posts..."
 msgstr ""
 
 #: app/templates/_post.html:14
@@ -181,15 +189,15 @@ msgstr "Bienvenido a Flask Mega"
 msgid "Login"
 msgstr "Ingresar"
 
-#: app/templates/base.html:48 app/templates/messages.html:4
+#: app/templates/base.html:49 app/templates/messages.html:4
 msgid "Messages"
 msgstr ""
 
-#: app/templates/base.html:51
+#: app/templates/base.html:57
 msgid "Profile"
 msgstr "Perfil"
 
-#: app/templates/base.html:54
+#: app/templates/base.html:60
 msgid "Logout"
 msgstr "Salir"
 
@@ -199,10 +207,12 @@ msgid "Hi, %(username)s!"
 msgstr "¡Hola, %(username)s!"
 
 #: app/templates/index.html:16 app/templates/search.html:12
+#: app/templates/user.html:48
 msgid "Newer posts"
 msgstr "Artículos siguientes"
 
 #: app/templates/index.html:21 app/templates/search.html:17
+#: app/templates/user.html:53
 msgid "Older posts"
 msgstr "Artículos previos"
 
@@ -222,30 +232,49 @@ msgstr ""
 
 #: app/templates/send_message.html:5
 #, python-format
-msgid "Send Message to %(recipients)s"
+msgid "Send Message to %(recipient)s"
 msgstr ""
 
-#: app/templates/user_popup.html:7
+#: app/templates/user.html:8
+#, fuzzy
+msgid "User"
+msgstr "Nombre de usuario"
+
+#: app/templates/user.html:11 app/templates/user_popup.html:7
 msgid "Last seen on"
 msgstr "Última visita"
 
-#: app/templates/user_popup.html:9
+#: app/templates/user.html:13 app/templates/user_popup.html:9
 #, python-format
 msgid "%(count)d followers"
 msgstr "%(count)d seguidores"
 
-#: app/templates/user_popup.html:9
+#: app/templates/user.html:13 app/templates/user_popup.html:9
 #, python-format
 msgid "%(count)d following"
 msgstr "siguiendo a %(count)d"
 
-#: app/templates/user_popup.html:15
+#: app/templates/user.html:15
+#, fuzzy
+msgid "Edit your profile"
+msgstr "Editar Perfil"
+
+#: app/templates/user.html:17
+#, fuzzy
+msgid "Export your posts"
+msgstr "¿Te olvidaste tu contraseña?"
+
+#: app/templates/user.html:23 app/templates/user_popup.html:15
 msgid "Follow"
 msgstr "Seguir"
 
-#: app/templates/user_popup.html:22
+#: app/templates/user.html:30 app/templates/user_popup.html:22
 msgid "Unfollow"
 msgstr "Dejar de seguir"
+
+#: app/templates/user.html:35
+msgid "Send private message"
+msgstr ""
 
 #: app/templates/auth/login.html:7
 msgid "New User?"
@@ -285,4 +314,7 @@ msgstr "El administrador ha sido notificado. ¡Lamentamos la inconveniencia!"
 
 #~ msgid "Edit your profile"
 #~ msgstr "Editar tu perfil"
+
+#~ msgid "Send Message to %(recipients)s"
+#~ msgstr ""
 
